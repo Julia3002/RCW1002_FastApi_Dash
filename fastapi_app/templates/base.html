@@ -13,7 +13,14 @@
     </div>
 
     <div class="container">
-        {% block content %} hhiiiiiiii   {%  endblock %}
+        {% block content %} 
+            <h3> Aujourd'hui est {{info.date}} et il est {{info.time}}</h3>   
+
+
+            <p>City : {{info.weather.city}}</p>
+            <p> Temperature : {{info.weather.temperature}}</p>
+            <p>Description: {{info.weather.description}}</p>
+        {%  endblock %}
     </div>
     
 </body>
