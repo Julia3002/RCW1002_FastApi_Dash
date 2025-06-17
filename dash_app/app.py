@@ -1,63 +1,68 @@
+
 import dash
-from dash import html , dcc
-
-app  = dash.Dash(__name__, requests_pathname_prefix='/dashboard/')
+from dash import html, dcc
 
 
+# initializer 'application Dash
+app = dash.Dash(__name__, requests_pathname_prefix ='/dashboard/')
+
+
+# Definir Dash layout avec 4 graph
 app.layout = html.Div(children=[
     html.Div([
-        html.A('Acceuil',href='/'),
+        html.A('Acceuil', href='/'),
         "|",
-        html.A('Logout',href='/logout'),
-    ], style={'marginTop':20}),
+        html.A("Logout", href="/logout")
+    ], style={'marginTop':25}),
     
+    html.H1(children = "Example de Dashboard" ),
     
-    html.H1(children= "Example de Dashboard"),
-    
-    html.H2(children= "**** Bar Graph ****"),
+    html.H2("*** Bar Graph *** "),
     dcc.Graph(
-        id="exmpl_1",
+        id="exm1",
         figure={
             "data":[
-                {"x":[1,2,3] , "y": [6,9,4], "type":"bar", "name":"Example 1" },
-                {"x":[7,2,5] , "y": [3,7,1], "type":"bar", "name":"Example 2" }
+                {"x":[5,7,12], "y":[10,16,11] , "type":"bar" , "name":"exmple1"},
+                {"x":[8,18,22], "y":[5,8,3] , "type":"bar" , "name":"exmple2"}
             ]
         }
     ),
     
-    
-    html.H2(children= "**** Line Graph ****"),
+    html.H2("*** Line Graph *** "),
     dcc.Graph(
-        id="exmpl_2",
+        id="exm2",
         figure={
             "data":[
-                {"x":[4,3,8] , "y": [4,9,1], "type":"line", "name":"Example 3" },
-                {"x":[2,6,8] , "y": [9,6,11], "type":"line", "name":"Example 4" }
+                {"x":[1,3,5], "y":[10,12,14] , "type":"line" , "name":"exmple3"},
+                {"x":[2,4,6], "y":[13,15,17] , "type":"line" , "name":"exmple4"}
             ]
         }
     ),
     
-    html.H2(children= "**** Scratter Graph ****"),
+    html.H2("*** scatter Plot Graph *** "),
     dcc.Graph(
-        id="exmpl_3",
+        id="exm3",
         figure={
             "data":[
-                {"x":[4,3,8] , "y": [4,9,1], "type":"scatter", "mode":"markers" , "name":"Example 5" },
-                {"x":[2,6,8] , "y": [9,6,11], "type":"scatter", "mode":"markers" , "name":"Example 6" }
+                {"x":[1,3,5,7], "y":[10,12,14,16] , "type":"scatter" , "mode":"markers","name":"scatter exmpl1"},
+                {"x":[2,4,6,8], "y":[13,15,17,19] , "type":"scatter" , "mode":"markers","name":"scatter exmpl2"}
             ]
         }
     ),
     
-        html.H2(children= "**** Pie Chart Graph ****"),
+    html.H2("*** Pie Chart Graph *** "),
     dcc.Graph(
-        id="exmpl_4",
+        id="exm4",
         figure={
             "data":[
-                {"labels":["A","B","C"] , "y": [4,9,1], "type":"pie",  "name":"Example 7" },
-            ]
+                {"labels":["A","B","C"], "y":[10,12,14] , "type":"pie" , "name":"pie chart expl1"},
+            ],
+            "layout":{"title":"pie chart example"}
         }
     ),
+    
+    
+    
 ])
-
 
 server = app.server
